@@ -5,8 +5,8 @@
   A fork of libcamera for COMP3888 Capstone
 ============================================
 
-This fork of libcamera exists to try and remove circumvent the synchronous
-nature of ``libcamera``. Currently, libcamera does not allow multiple sources
+This fork of libcamera exists to try and circumvent the synchrony of
+``libcamera``. Currently, libcamera does not allow multiple sources
 to read from the same camera stream. This fork aims to change this in an attempt
 to restore functionality found in the now defunct ``RaspiMJPEG``.
 
@@ -24,7 +24,7 @@ to allow it to continue receiving updates from the original libcamera.
 
 .. code::
 
-  git clone https://github.com/COMP3888-M12-02-2024/libcamera-async
+  git clone https://github.com/COMP3888-M12-02-2024/libcamera-async.git
   cd libcamera-async
   git remote add upstream https://github.com/raspberrypi/libcamera.git
   git fetch upstream

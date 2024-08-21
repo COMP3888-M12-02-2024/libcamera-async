@@ -5,8 +5,8 @@
   A fork of libcamera for COMP3888 Capstone
 ============================================
 
-This fork of libcamera exists to try and circumvent the synchrony of
-``libcamera``. Currently, libcamera does not allow multiple sources
+This fork of libcamera exists to try and remove circumvent the synchronous
+nature of ``libcamera``. Currently libcamera does not allow multiple sources
 to read from the same camera stream. This fork aims to change this in an attempt
 to restore functionality found in the now defunct ``RaspiMJPEG``.
 

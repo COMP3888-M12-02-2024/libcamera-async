@@ -24,7 +24,7 @@ to allow it to continue receiving updates from the original libcamera.
 
 .. code::
 
-  git clone https://github.com/COMP3888-M12-02-2024/libcamera-async
+  git clone https://github.com/COMP3888-M12-02-2024/libcamera-async.git
   cd libcamera-async
   git remote add upstream https://github.com/raspberrypi/libcamera.git
   git fetch upstream
@@ -67,17 +67,17 @@ ruh roh.
 Pull Requests
 -------------
 
-When creating a pull request, play around with the options to make sure that
-you're not creating a pull request into the raspberrypi/libcamera repository,
-but rather this libcamera repository. The option didn't appear for me by default
-so I had to manually select which branch I wanted to create a pull request into
-on GitHub.
+When creating a pull request, you will see an error saying that you cannot
+automatically merge. This is expected behaviour, and has been designed to prevent
+accidental pull requests to the original raspberrypi/libcamera repository (as
+I accidentally did two different times.) By default, GitHub will try to make
+the pull request go into libcamera-async-IGNORE, but since this repository is
+archived the request will be unsuccessful.
 
-As of now, any pushes we make for some reason create a notification
-on the original git repository as well as our own. The default setting
-when making a new pull request is to merge into raspberrypi/libcamera rather than
-into our own repository, so always double check that you are merging into
-**this** repository.
+Once creating a pull request, make sure that on the left you are selecting the
+correct repository for the request: COMP3888-M12-02-2024/libcamera-async. You
+should see a green tick with the message "Able to merge". If it still appears red,
+then there may be conflicts that need to be resolved.
 
 The rest of this readme comes directly from the libcamera readme.
 

@@ -1,5 +1,87 @@
 .. SPDX-License-Identifier: CC-BY-SA-4.0
 
+.. section-begin-preamble
+============================================
+  A fork of libcamera for COMP3888 Capstone
+============================================
+
+This fork of libcamera exists to try and remove circumvent the synchronous
+nature of ``libcamera``. Currently, libcamera does not allow multiple sources
+to read from the same camera stream. This fork aims to change this in an attempt
+to restore functionality found in the now defunct ``RaspiMJPEG``.
+
+By creating a separate fork of libcamera, the hope is that this project can
+continue to function as libcamera is updated.
+
+.. section-end-preamble
+.. section-begin-forksetup
+
+Setting up the fork
+-------------------
+
+To start working on the fork, you will need to configure your git repository
+to allow it to continue receiving updates from the original libcamera.
+
+.. code::
+
+  git clone https://github.com/COMP3888-M12-02-2024/libcamera-async
+  cd libcamera-async
+  git remote add upstream https://github.com/raspberrypi/libcamera.git
+  git fetch upstream
+
+To confirm this has worked, run ``git remote -v``. You should see the following:
+
+.. code::
+
+  origin  https://github.com/goombado/libcamera-async.git (fetch)
+  origin  https://github.com/goombado/libcamera-async.git (push)
+  upstream        https://github.com/raspberrypi/libcamera.git (fetch)
+  upstream        https://github.com/raspberrypi/libcamera.git (push)
+
+To make changes, checkout branches and push as normal.
+
+.. code::
+
+  git checkout -b new_branch
+  git add .
+  git commit -am "new commit"
+  git push origin new_branch
+  # make sure you do not use the -u argument for git push!!
+
+When pulling changes, it is also good to fetch changes from the RaspberryPi
+libcamera repository. This will automatically merge the official main branch
+with your own **local** repository, so make sure to push these changes.
+
+.. code::
+
+  # this can be run from any branch, not just main
+  git pull
+  git fetch upstream
+  git merge upstream/main
+  git commit -am "fetched upstream changes"
+  git push
+
+Following all of these steps shouldn't cause any issues, but if it does then
+ruh roh.
+
+Pull Requests
+-------------
+
+When creating a pull request, play around with the options to make sure that
+you're not creating a pull request into the raspberrypi/libcamera repository,
+but rather this libcamera repository. The option didn't appear for me by default
+so I had to manually select which branch I wanted to create a pull request into
+on GitHub.
+
+As of now, any pushes we make for some reason create a notification
+on the original git repository as well as our own. The default setting
+when making a new pull request is to merge into raspberrypi/libcamera rather than
+into our own repository, so always double check that you are merging into
+**this** repository.
+
+The rest of this readme comes directly from the libcamera readme.
+
+.. section-end-forksetup
 .. section-begin-libcamera
 
 ===========
@@ -31,7 +113,7 @@ Getting Started
 Only build ``libcamera`` from scratch if you need custom behaviour or the latest features that have not yet reached ``apt`` repositories.
 
 If you run ``Raspberry Pi OS Lite``, begin by installing the following packages:
-  
+
 .. code::
 
   sudo apt install -y python-pip git python3-jinja2
@@ -61,7 +143,7 @@ You can disable the ``gstreamer`` plugin by replacing ``-Dgstreamer=enabled`` wi
 If you disable ``gstreamer``, there is no need to install the ``libglib2.0-dev`` and ``libgstreamer-plugins-base1.0-dev`` dependencies.
 
 On devices with 1GB of memory or less, the build may exceed available memory. Append the ``-j 1`` flag to ``ninja`` commands to limit the build to a single process.
-This should prevent the build from exceeding available memory on devices like the Raspberry Pi Zero and the Raspberry Pi 3. 
+This should prevent the build from exceeding available memory on devices like the Raspberry Pi Zero and the Raspberry Pi 3.
 
 ``libcamera`` does not yet have a stable binary interface. Always build ``rpicam-apps`` after you build ``libcamera``.
 

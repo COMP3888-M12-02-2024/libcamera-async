@@ -26,6 +26,8 @@ to allow it to continue receiving updates from the original libcamera.
 
   git clone https://github.com/COMP3888-M12-02-2024/libcamera-async.git
   cd libcamera-async
+  git config user.name "Full Name SID"
+  git config user.email "unikey@uni.sydney.edu.au"
   git remote add upstream https://github.com/raspberrypi/libcamera.git
   git fetch upstream
 

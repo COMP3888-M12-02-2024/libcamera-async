@@ -9,5 +9,5 @@
 
 /**
  * \file base/shared_mutex.h
- * \brief Shared Mutex classes with clang thread safety annotation to allow for concurrent read
+ * \brief Shared Mutex classes with clang thread safety annotation to allow for concurrent read, exclusive write
  */
